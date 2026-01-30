@@ -214,9 +214,9 @@ server {
         client_max_body_size 50M;
     }
     
-    # SPA routing (all routes to index.html)
+    # Clean URLs: /kitchen-renovation → kitchen-renovation.html, then SPA fallback
     location / {
-        try_files \$uri \$uri/ /index.html;
+        try_files \$uri \$uri.html \$uri/ /index.html;
     }
 }
 NGINXCONF

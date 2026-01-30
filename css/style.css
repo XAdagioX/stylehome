@@ -250,23 +250,11 @@ body {
     width: 24px;
     height: 2px;
     background-color: #fff;
-    transition: all 0.3s ease;
+    /* No animation - burger stays as 3 lines */
 }
 
 .header.scrolled .header__burger-line {
     background-color: #333;
-}
-
-.header__burger.active .header__burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-}
-
-.header__burger.active .header__burger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.header__burger.active .header__burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* ===== HERO SECTION ===== */
@@ -795,7 +783,7 @@ body {
         opacity: 0;
     }
     
-    /* Close menu button (cross) */
+    /* Close button (X) on the right inside menu */
     .header__nav-close {
         position: absolute;
         top: 20px;
@@ -812,11 +800,11 @@ body {
         padding: 0;
         transition: transform 0.3s ease;
     }
-    
+
     .header__nav-close:hover {
         transform: rotate(90deg);
     }
-    
+
     .header__nav-close-line {
         position: absolute;
         width: 24px;
@@ -824,22 +812,27 @@ body {
         background-color: #333;
         transition: all 0.3s ease;
     }
-    
+
     .header__nav-close-line:nth-child(1) {
         transform: rotate(45deg);
     }
-    
+
     .header__nav-close-line:nth-child(2) {
         transform: rotate(-45deg);
     }
-    
+
+    /* Hide burger when menu is open — only X (close) on the right visible */
+    .header__nav.active ~ .header__burger {
+        display: none !important;
+    }
+
     .header__nav.active {
         transform: translateX(0);
         visibility: visible;
         opacity: 1;
         transition: transform 0.3s ease, visibility 0s, opacity 0.3s ease;
     }
-    
+
     /* Block transition on resize */
     body.no-transition .header__nav,
     body.no-transition .header__nav.active {
@@ -1557,6 +1550,17 @@ body {
 
 .form__group--full {
     grid-column: 1 / -1;
+}
+
+/* Honeypot field - hidden from humans via CSS (not display:none) */
+.form__group--honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .form__label {

@@ -5,6 +5,9 @@ import { querySelector, querySelectorAll } from '../utils/dom';
 // Store uploaded photos
 let uploadedPhotos: File[] = [];
 
+// Store timestamp when form was rendered (for anti-spam)
+let formRenderedAt: number = Date.now();
+
 /**
  * Initialize automatic textarea resize
  */
@@ -305,6 +308,9 @@ async function submitForm(formData: FormData): Promise<void> {
     estimatedBudget: formData.get('budget') as string || '',
     preferredTimeline: formData.get('timeline') as string || '',
     projectDetails: formData.get('details') as string,
+    // Anti-spam fields
+    companyName: formData.get('companyName') as string || '', // Honeypot - should be empty
+    formRenderedAt: formRenderedAt, // Timestamp when form was loaded
   };
   
   // Convert photos to base64 and add to payload
@@ -394,6 +400,9 @@ function showFormMessage(message: string, type: 'success' | 'error'): void {
  * Initialize form module
  */
 export function initForm(): void {
+  // Record form render time for anti-spam
+  formRenderedAt = Date.now();
+  
   initTextareaResize();
   initPhotoUpload();
   initFormValidation();

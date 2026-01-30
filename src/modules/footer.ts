@@ -3,34 +3,32 @@
 import { insertFooter, updateFooter, type FooterConfig, type FooterLink } from '../components/Footer';
 
 /**
- * Get current page name (e.g., 'index.html', 'kitchen-renovation.html')
+ * Get current path (e.g., '', 'kitchen-renovation') — no .html in URL
  */
-function getCurrentPage(): string {
-  const path = window.location.pathname;
-  const page = path.split('/').pop() || 'index.html';
-  return page;
+function getCurrentPath(): string {
+  const path = window.location.pathname.replace(/^\//, '').replace(/\.html$/, '');
+  return path;
 }
 
 /**
  * Check if current page is the main index page
  */
 function isMainPage(): boolean {
-  const currentPage = getCurrentPage();
-  return currentPage === 'index.html' || currentPage === '' || currentPage === '/';
+  const path = getCurrentPath();
+  return path === '' || path === 'index';
 }
 
 /**
- * Normalize Quick Links hrefs - add index.html prefix for anchor links on non-main pages
+ * Normalize Quick Links hrefs - use /#anchor for anchor links on non-main pages (clean URL)
  */
 function normalizeQuickLinks(quickLinks: FooterLink[]): FooterLink[] {
   const isMain = isMainPage();
   
   return quickLinks.map(link => {
-    // If it's an anchor link (starts with #) and we're not on main page, add index.html
     if (link.href.startsWith('#') && !isMain) {
       return {
         ...link,
-        href: `index.html${link.href}`
+        href: `/${link.href}`
       };
     }
     return link;
@@ -98,10 +96,10 @@ const defaultFooterConfig: FooterConfig = {
     'Vancouver, WA +50 miles'
   ],
   ourServices: [
-    { text: 'Wood and Panel Wall Decor', href: 'wood-and-panel-wall-decor.html' },
-    { text: 'Kitchen Renovation', href: 'kitchen-renovation.html' },
-    { text: 'Bathroom Renovation', href: 'bathroom-renovation.html' },
-    { text: 'Whole-Home Transformation', href: 'whole-home-transformation.html' }
+    { text: 'Wood and Panel Wall Decor', href: '/wood-and-panel-wall-decor' },
+    { text: 'Kitchen Renovation', href: '/kitchen-renovation' },
+    { text: 'Bathroom Renovation', href: '/bathroom-renovation' },
+    { text: 'Whole-Home Transformation', href: '/whole-home-transformation' }
   ],
   copyright: '© Style Homes 2025'
 };

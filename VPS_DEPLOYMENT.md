@@ -176,10 +176,10 @@ SPRING_DATASOURCE_PASSWORD=ВАШ_СИЛЬНИЙ_ПАРОЛЬ
 # Email (iCloud)
 MAIL_HOST=smtp.mail.me.com
 MAIL_PORT=587
-MAIL_USERNAME=stylehomesusa@icloud.com
+MAIL_USERNAME=chaikataras@icloud.com
 MAIL_PASSWORD=ВАШ_APP_SPECIFIC_PASSWORD
-MAIL_FROM=stylehomesusa@icloud.com
-ADMIN_EMAIL=stylehomesusa@icloud.com
+MAIL_FROM=chaikataras@icloud.com
+ADMIN_EMAIL=chaikataras@icloud.com
 
 # CORS (замініть на свій домен)
 CORS_ORIGINS=https://stylehomesusa.com,https://www.stylehomesusa.com
@@ -271,9 +271,9 @@ server {
         client_max_body_size 50M;
     }
     
-    # SPA routing (all routes to index.html)
+    # Clean URLs: /kitchen-renovation → kitchen-renovation.html, then SPA fallback
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files $uri $uri.html $uri/ /index.html;
     }
 }
 ```
@@ -330,10 +330,10 @@ sudo ufw status
 ```env
 MAIL_HOST=smtp.mail.me.com
 MAIL_PORT=587
-MAIL_USERNAME=stylehomesusa@icloud.com
+MAIL_USERNAME=chaikataras@icloud.com
 MAIL_PASSWORD=xxxx-xxxx-xxxx-xxxx    # App-Specific Password
-MAIL_FROM=stylehomesusa@icloud.com
-ADMIN_EMAIL=stylehomesusa@icloud.com
+MAIL_FROM=chaikataras@icloud.com
+ADMIN_EMAIL=chaikataras@icloud.com
 ```
 
 ### Альтернатива: Gmail

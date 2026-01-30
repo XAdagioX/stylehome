@@ -37,4 +37,18 @@ public class ConsultationRequest {
      * Photos are sent as base64 encoded data from the frontend.
      */
     private List<PhotoData> photos;
+    
+    // ===== ANTI-SPAM FIELDS =====
+    
+    /**
+     * Honeypot field - should be empty.
+     * Bots typically fill all fields, humans don't see this field (hidden via CSS).
+     */
+    private String companyName;
+    
+    /**
+     * Timestamp when the form was rendered.
+     * Used to detect bots (too fast submission) and stale forms.
+     */
+    private Long formRenderedAt;
 }

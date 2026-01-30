@@ -97,6 +97,36 @@ export default defineConfig({
   plugins: [
     // Fix Windows MIME type for .ts files
     fixTsMimeType(),
+    // Plugin to remove .html extensions from links (for clean URLs with Nginx)
+    {
+      name: 'remove-html-extensions',
+      closeBundle() {
+        const distDir = resolve(__dirname, 'dist');
+        const htmlFiles = findHtmlFiles(distDir);
+        console.log(`[remove-html-extensions] Found ${htmlFiles.length} HTML files to process`);
+        htmlFiles.forEach(file => {
+          let content = readFileSync(file, 'utf-8');
+          const originalContent = content;
+          
+          // Replace href="index.html" with href="/"
+          content = content.replace(/href="index\.html"/g, 'href="/"');
+          
+          // Replace href="index.html#section" with href="/#section"
+          content = content.replace(/href="index\.html#([^"]+)"/g, 'href="/#$1"');
+          
+          // Replace href="something.html" with href="/something"
+          content = content.replace(/href="([a-zA-Z0-9_-]+)\.html"/g, 'href="/$1"');
+          
+          // Replace href="something.html#section" with href="/something#section"
+          content = content.replace(/href="([a-zA-Z0-9_-]+)\.html#([^"]+)"/g, 'href="/$1#$2"');
+          
+          if (content !== originalContent) {
+            writeFileSync(file, content, 'utf-8');
+            console.log(`[remove-html-extensions] Updated ${file}`);
+          }
+        });
+      }
+    }
     // Plugin for GitHub Pages base path (disabled for VPS)
     // Uncomment if deploying to GitHub Pages
     /*

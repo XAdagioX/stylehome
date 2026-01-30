@@ -102,7 +102,7 @@
 
     <header class="header">
         <div class="header__container">
-            <a href="index.html" class="header__logo">
+            <a href="/" class="header__logo">
                 <img src="img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
             </a>
             <nav class="header__nav">
@@ -168,7 +168,7 @@
         <!-- Services Cards Section -->
         <section class="services-hero">
             <div class="services-hero__container">
-                <a href="kitchen-renovation.html" class="services-hero__card">
+                <a href="/kitchen-renovation" class="services-hero__card">
                     <div class="services-hero__card-image">
                         <img src="img/kitchen-renovation.jpg" alt="Kitchen Renovation">
                     </div>
@@ -177,7 +177,7 @@
                     </div>
                 </a>
 
-                <a href="bathroom-renovation.html" class="services-hero__card">
+                <a href="/bathroom-renovation" class="services-hero__card">
                     <div class="services-hero__card-image">
                         <img src="img/bathroom-renovation.jpg" alt="Bathroom Renovation">
                     </div>
@@ -283,6 +283,13 @@
                             <div class="form__photos-preview" id="photosPreview"></div>
                         </div>
 
+                        <!-- Honeypot field - hidden from humans, filled by bots -->
+                        <div class="form__group form__group--honeypot" aria-hidden="true">
+                            <label for="companyName" class="form__label">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" class="form__input"
+                                tabindex="-1" autocomplete="off">
+                        </div>
+
                         <button type="submit" class="form__submit">Send</button>
                     </form>
                 </div>
@@ -333,7 +340,7 @@
                 <h5 class="services__subtitle" data-aos="fade-up" data-aos-delay="50">Our Services</h5>
 
                 <div class="services__list">
-                    <a href="wood-and-panel-wall-decor.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                    <a href="/wood-and-panel-wall-decor" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                         <div class="service-card__image">
                             <img src="img/panel.jpg" alt="Wood and Panel Wall Decor">
                         </div>
@@ -350,7 +357,7 @@
                         </div>
                     </a>
 
-                    <a href="kitchen-renovation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                    <a href="/kitchen-renovation" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                         <div class="service-card__image">
                             <img src="img/kitchen.jpg" alt="Kitchen Renovation">
                         </div>
@@ -369,7 +376,7 @@
                         </div>
                     </a>
 
-                    <a href="bathroom-renovation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                    <a href="/bathroom-renovation" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                         <div class="service-card__image">
                             <img src="img/bathroom.jpg" alt="Bathroom Renovation">
                         </div>
@@ -389,7 +396,7 @@
                         </div>
                     </a>
 
-                    <a href="whole-home-transformation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                    <a href="/whole-home-transformation" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                         <div class="service-card__image">
                             <img src="img/home.jpg" alt="Whole-Home Transformation">
                         </div>
@@ -1038,10 +1045,10 @@
                     <h4 class="footer__title">Our Services</h4>
                     <nav class="footer__nav">
                         <ul>
-                            <li><a href="wood-and-panel-wall-decor.html">Wood and Panel Wall Decor</a></li>
-                            <li><a href="kitchen-renovation.html">Kitchen Renovation</a></li>
-                            <li><a href="bathroom-renovation.html">Bathroom Renovation</a></li>
-                            <li><a href="whole-home-transformation.html">Whole-Home Transformation</a></li>
+                            <li><a href="/wood-and-panel-wall-decor">Wood and Panel Wall Decor</a></li>
+                            <li><a href="/kitchen-renovation">Kitchen Renovation</a></li>
+                            <li><a href="/bathroom-renovation">Bathroom Renovation</a></li>
+                            <li><a href="/whole-home-transformation">Whole-Home Transformation</a></li>
                         </ul>
                     </nav>
                 </div>
