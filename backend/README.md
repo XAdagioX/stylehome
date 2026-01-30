@@ -1,66 +1,66 @@
 # Style Homes Backend API
 
-Spring Boot backend для веб-сайту Style Homes.
+Spring Boot backend for the Style Homes website.
 
-## Технології
+## Technologies
 
 - Java 17
 - Spring Boot 3.2.0
 - Spring Data JPA
 - H2 Database (development) / PostgreSQL (production)
-- Flyway (міграції БД)
+- Flyway (database migrations)
 - Spring Mail
 - Lombok
 
-## Структура проекту
+## Project Structure
 
 ```
 backend/
 ├── src/main/java/com/stylehomes/
 │   ├── StyleHomesApplication.java
-│   ├── config/          # Конфігурації (CORS, Async, Mail)
-│   ├── controller/      # REST контролери
-│   ├── service/         # Бізнес-логіка
-│   ├── repository/      # JPA репозиторії
-│   ├── model/           # Entity моделі
+│   ├── config/          # Configuration (CORS, Async, Mail)
+│   ├── controller/      # REST controllers
+│   ├── service/         # Business logic
+│   ├── repository/      # JPA repositories
+│   ├── model/           # Entity models
 │   ├── dto/             # Data Transfer Objects
-│   └── exception/       # Обробка помилок
+│   └── exception/       # Error handling
 └── src/main/resources/
     ├── application.yml
-    └── db/migration/    # SQL міграції
+    └── db/migration/    # SQL migrations
 ```
 
-## Запуск проекту
+## Running the Project
 
-### Вимоги
+### Requirements
 - Java 17+
-- Maven 3.6+ (або використати Maven Wrapper)
+- Maven 3.6+ (or use Maven Wrapper)
 
-### Локальний запуск (з Maven)
+### Local Run (with Maven)
 
 ```bash
-# Збірка проекту
+# Build the project
 mvn clean install
 
-# Запуск
+# Run
 mvn spring-boot:run
 ```
 
-### Без Maven (використовуючи Java)
+### Without Maven (using Java)
 
-Якщо Maven не встановлено, можна використати Maven Wrapper або завантажити залежності вручну.
+If Maven is not installed, you can use Maven Wrapper or download dependencies manually.
 
 ## API Endpoints
 
 ### Consultation API
 
-- `POST /api/consultations` - Створити новий запит
-- `GET /api/consultations` - Отримати всі запити
-- `GET /api/consultations/{id}` - Отримати конкретний запит
-- `PUT /api/consultations/{id}/status?status=PROCESSED` - Оновити статус
-- `DELETE /api/consultations/{id}` - Видалити запит
+- `POST /api/consultations` - Create a new request
+- `GET /api/consultations` - Get all requests
+- `GET /api/consultations/{id}` - Get a specific request
+- `PUT /api/consultations/{id}/status?status=PROCESSED` - Update status
+- `DELETE /api/consultations/{id}` - Delete a request
 
-### Приклад запиту
+### Example Request
 
 ```bash
 POST http://localhost:8080/api/consultations
@@ -79,36 +79,36 @@ Content-Type: application/json
 }
 ```
 
-## Конфігурація
+## Configuration
 
 ### Development (application-dev.yml)
 - H2 in-memory database
-- Автоматичне створення таблиць
-- Детальне логування
+- Automatic table creation
+- Detailed logging
 
 ### Production (application-prod.yml)
 - PostgreSQL database
-- Міграції через Flyway
-- Мінімальне логування
+- Flyway migrations
+- Minimal logging
 
-### Email налаштування
+### Email Configuration
 
-Додайте змінні оточення:
+Add environment variables:
 - `MAIL_USERNAME` - SMTP username
 - `MAIL_PASSWORD` - SMTP password
-- `MAIL_FROM` - Email відправника
-- `ADMIN_EMAIL` - Email адміністратора
+- `MAIL_FROM` - Sender email
+- `ADMIN_EMAIL` - Administrator email
 
-## База даних
+## Database
 
 ### H2 Console (development)
-Доступна за адресою: http://localhost:8080/h2-console
+Available at: http://localhost:8080/h2-console
 - JDBC URL: `jdbc:h2:mem:stylehomesdb`
 - Username: `sa`
-- Password: (порожній)
+- Password: (empty)
 
-### Міграції
-Міграції знаходяться в `src/main/resources/db/migration/` та виконуються автоматично при старті.
+### Migrations
+Migrations are located in `src/main/resources/db/migration/` and run automatically on startup.
 
 ## ✅ Photo Attachments
 

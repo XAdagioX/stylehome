@@ -1,149 +1,149 @@
 # Style Homes Website
 
-Сучасний веб-сайт для Style Homes - компанії з ремонту кухонь та ванних кімнат, що обслуговує Portland OR & Vancouver WA.
+Modern website for Style Homes — a kitchen and bathroom remodeling company serving Portland OR & Vancouver WA.
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### Вимоги
+### Requirements
 
-- Node.js 18+ та npm
-- Java 17+ (для бекенду)
+- Node.js 18+ and npm
+- Java 17+ (for backend)
 
-### Встановлення
+### Installation
 
 ```bash
-# Встановити залежності
+# Install dependencies
 npm install
 
-# Запустити сервер розробки
+# Start development server
 npm run dev
 ```
 
-Сайт буде доступний за адресою `http://localhost:8000`
+The site will be available at `http://localhost:8000`
 
-### Збірка для продакшн
+### Production Build
 
 ```bash
-# Зібрати проект
+# Build the project
 npm run build
 
-# Переглянути зібраний проект
+# Preview the built project
 npm run preview
 ```
 
-## 📁 Структура проекту
+## 📁 Project Structure
 
 ```
 stylehome_new/
-├── src/                    # TypeScript вихідні файли
-│   ├── components/         # Перевикористовувані компоненти (Hero, Footer, Carousel)
-│   ├── modules/           # Модулі функціональності (навігація, анімації тощо)
-│   ├── types/             # Визначення типів TypeScript
-│   ├── utils/             # Допоміжні функції
-│   ├── main.ts            # Точка входу додатку
-│   └── style.css          # Головна таблиця стилів
-├── public/                # Статичні ресурси (зображення, відео, бібліотеки)
-│   ├── img/              # Зображення
-│   ├── video/            # Відео файли
-│   └── js/libs/          # Сторонні бібліотеки (AOS, Anime.js)
-├── backend/              # Spring Boot бекенд API
-│   ├── src/main/java/   # Java вихідний код
-│   └── pom.xml          # Конфігурація Maven
-├── index.html           # Головна сторінка
+├── src/                    # TypeScript source files
+│   ├── components/         # Reusable components (Hero, Footer, Carousel)
+│   ├── modules/           # Feature modules (navigation, animations, etc.)
+│   ├── types/             # TypeScript type definitions
+│   ├── utils/             # Utility functions
+│   ├── main.ts            # Application entry point
+│   └── style.css          # Main stylesheet
+├── public/                # Static assets (images, video, libraries)
+│   ├── img/              # Images
+│   ├── video/            # Video files
+│   └── js/libs/          # Third-party libraries (AOS, Anime.js)
+├── backend/              # Spring Boot backend API
+│   ├── src/main/java/   # Java source code
+│   └── pom.xml          # Maven configuration
+├── index.html           # Home page
 ├── kitchen-renovation.html
 ├── bathroom-renovation.html
 ├── wood-and-panel-wall-decor.html
 ├── whole-home-transformation.html
-├── vite.config.ts       # Конфігурація Vite
-└── package.json         # Залежності Node.js
+├── vite.config.ts       # Vite configuration
+└── package.json         # Node.js dependencies
 ```
 
-## 🛠️ Технології
+## 🛠️ Technologies
 
 ### Frontend
 
 - **TypeScript** - Type-safe JavaScript
-- **Vite** - Швидкий інструмент збірки та dev сервер
-- **HTML5 & CSS3** - Сучасні веб-стандарти
-- **AOS (Animate On Scroll)** - Анімації при прокрутці
-- **Anime.js** - Розширені анімації
+- **Vite** - Fast build tool and dev server
+- **HTML5 & CSS3** - Modern web standards
+- **AOS (Animate On Scroll)** - Scroll-triggered animations
+- **Anime.js** - Advanced animations
 
 ### Backend
 
-- **Java 17** - Мова програмування
-- **Spring Boot 3.2** - Фреймворк додатку
-- **Spring Data JPA** - Доступ до бази даних
-- **PostgreSQL / H2** - База даних (H2 для розробки, PostgreSQL для продакшн)
-- **Flyway** - Міграції бази даних
+- **Java 17** - Programming language
+- **Spring Boot 3.2** - Application framework
+- **Spring Data JPA** - Database access
+- **PostgreSQL / H2** - Database (H2 for development, PostgreSQL for production)
+- **Flyway** - Database migrations
 
-## 📄 Сторінки
+## 📄 Pages
 
-- **Головна** (`index.html`) - Головна цільова сторінка
-- **Ремонт кухні** (`kitchen-renovation.html`)
-- **Ремонт ванної** (`bathroom-renovation.html`)
-- **Дерев'яні та панельні стіни** (`wood-and-panel-wall-decor.html`)
-- **Повна трансформація будинку** (`whole-home-transformation.html`)
+- **Home** (`index.html`) - Main landing page
+- **Kitchen Renovation** (`kitchen-renovation.html`)
+- **Bathroom Renovation** (`bathroom-renovation.html`)
+- **Wood and Panel Wall Decor** (`wood-and-panel-wall-decor.html`)
+- **Whole-Home Transformation** (`whole-home-transformation.html`)
 
-## 🎯 Функції
+## 🎯 Features
 
-- ✅ Адаптивний дизайн (мобільний, планшет, десктоп)
-- ✅ Плавна прокрутка навігації
-- ✅ Анімована hero секція з відео фоном
-- ✅ Галереї проектів з каруселями
-- ✅ Форма консультації
-- ✅ Секція відгуків
-- ✅ FAQ акордеон
-- ✅ Backend API для відправки форм
+- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ Smooth scroll navigation
+- ✅ Animated hero section with video background
+- ✅ Project galleries with carousels
+- ✅ Consultation form
+- ✅ Testimonials section
+- ✅ FAQ accordion
+- ✅ Backend API for form submission
 
-## 🔧 Розробка
+## 🔧 Development
 
-### Frontend розробка
+### Frontend Development
 
 ```bash
-# Запустити dev сервер з hot reload
+# Start dev server with hot reload
 npm run dev
 
-# Перевірка типів
+# Type checking
 npm run type-check
 
-# Збірка для продакшн
+# Production build
 npm run build
 ```
 
-### Backend розробка
+### Backend Development
 
 ```bash
 cd backend
 
-# Запустити з Maven
+# Run with Maven
 mvn spring-boot:run
 
-# Або зібрати та запустити JAR
+# Or build and run JAR
 mvn clean package
 java -jar target/stylehome-backend-1.0.0.jar
 ```
 
-Backend API буде доступний за адресою `http://localhost:8080/api`
+Backend API will be available at `http://localhost:8080/api`
 
-## 📦 Деплоймент
+## 📦 Deployment
 
-Проект налаштований для деплойменту на GitHub Pages:
+The project is configured for deployment on GitHub Pages:
 - Base path: `/stylehome-wix-clone/`
-- Автоматичний деплоймент через GitHub Actions
-- Результат збірки: директорія `dist/`
+- Automatic deployment via GitHub Actions
+- Build output: `dist/` directory
 
-## 🔗 Посилання
+## 🔗 Links
 
-- **Живий сайт**: [GitHub Pages](https://largoscript.github.io/stylehome-wix-clone/)
-- **Репозиторій**: [GitHub](https://github.com/LargoScript/stylehome-wix-clone)
+- **Live site**: [GitHub Pages](https://largoscript.github.io/stylehome-wix-clone/)
+- **Repository**: [GitHub](https://github.com/LargoScript/stylehome-wix-clone)
 
-## 📝 Примітки
+## 📝 Notes
 
-- Всі коментарі в коді англійською мовою
-- Зображення оптимізовані (WebP/AVIF де можливо)
-- Backend опціональний - frontend працює самостійно
-- Відправка форм потребує запущеного backend API
+- All code comments are in English
+- Images are optimized (WebP/AVIF where possible)
+- Backend is optional — frontend works standalone
+- Form submission requires a running backend API
 
-## 📄 Ліцензія
+## 📄 License
 
 ISC
