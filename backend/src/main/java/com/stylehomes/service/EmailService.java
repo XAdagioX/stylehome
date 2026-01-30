@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.Base64;
 import java.util.List;
@@ -68,7 +69,7 @@ public class EmailService {
             helper.setFrom(fromEmail);
             helper.setTo(adminEmail);
             helper.setSubject("New Consultation Request (with photos) - Style Homes");
-            helper.setText(buildAdminNotificationEmail(consultation, photos.size()));
+            helper.setText(buildAdminNotificationEmail(consultation, photos.size()), true);
             
             // Add photo attachments
             int photoIndex = 1;
@@ -106,13 +107,15 @@ public class EmailService {
     
     private void sendSimpleAdminNotification(Consultation consultation) {
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromEmail);
-            message.setTo(adminEmail);
-            message.setSubject("New Consultation Request - Style Homes");
-            message.setText(buildAdminNotificationEmail(consultation, 0));
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
             
-            mailSender.send(message);
+            helper.setFrom(fromEmail);
+            helper.setTo(adminEmail);
+            helper.setSubject("New Consultation Request - Style Homes");
+            helper.setText(buildAdminNotificationEmail(consultation, 0), true);
+            
+            mailSender.send(mimeMessage);
             log.info("Admin notification email sent for consultation ID: {}", consultation.getId());
         } catch (Exception e) {
             log.error("Failed to send admin notification email", e);
@@ -151,49 +154,71 @@ public class EmailService {
     }
     
     private String buildAdminNotificationEmail(Consultation consultation, int photoCount) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("═══════════════════════════════════════════════════════════\n");
-        sb.append("           NEW CONSULTATION REQUEST - STYLE HOMES\n");
-        sb.append("═══════════════════════════════════════════════════════════\n\n");
-        
-        sb.append("📋 CUSTOMER INFORMATION:\n");
-        sb.append("─────────────────────────────────────────────────────────\n");
-        sb.append(String.format("Name:      %s %s\n", 
-            consultation.getFirstName(), 
-            consultation.getLastName() != null ? consultation.getLastName() : ""));
-        sb.append(String.format("Email:     %s\n", consultation.getEmail()));
-        sb.append(String.format("Phone:     %s\n", 
-            consultation.getPhone() != null ? consultation.getPhone() : "Not provided"));
-        sb.append("\n");
-        
-        sb.append("🏠 PROJECT DETAILS:\n");
-        sb.append("─────────────────────────────────────────────────────────\n");
-        sb.append(String.format("Type:      %s\n", 
-            consultation.getProjectType() != null ? consultation.getProjectType() : "Not specified"));
-        sb.append(String.format("Location:  %s\n", 
-            consultation.getProjectLocation() != null ? consultation.getProjectLocation() : "Not specified"));
-        sb.append(String.format("Budget:    %s\n", 
-            consultation.getEstimatedBudget() != null ? consultation.getEstimatedBudget() : "Not specified"));
-        sb.append(String.format("Timeline:  %s\n", 
-            consultation.getPreferredTimeline() != null ? consultation.getPreferredTimeline() : "Not specified"));
-        sb.append("\n");
-        
-        sb.append("📝 MESSAGE:\n");
-        sb.append("─────────────────────────────────────────────────────────\n");
-        sb.append(consultation.getProjectDetails());
-        sb.append("\n\n");
-        
-        if (photoCount > 0) {
-            sb.append("📷 ATTACHED PHOTOS: ").append(photoCount).append(" file(s)\n");
-            sb.append("─────────────────────────────────────────────────────────\n");
-            sb.append("Photos are attached to this email.\n\n");
-        }
-        
-        sb.append("═══════════════════════════════════════════════════════════\n");
-        sb.append(String.format("Request ID: #%d\n", consultation.getId()));
-        sb.append(String.format("Received:   %s\n", consultation.getCreatedAt()));
-        sb.append("═══════════════════════════════════════════════════════════\n");
-        
-        return sb.toString();
+        String firstName = HtmlUtils.htmlEscape(consultation.getFirstName());
+        String lastName = HtmlUtils.htmlEscape(consultation.getLastName() != null ? consultation.getLastName() : "");
+        String email = HtmlUtils.htmlEscape(consultation.getEmail());
+        String phone = HtmlUtils.htmlEscape(consultation.getPhone() != null ? consultation.getPhone() : "Not provided");
+        String projectType = HtmlUtils.htmlEscape(consultation.getProjectType() != null ? consultation.getProjectType() : "Not specified");
+        String projectLocation = HtmlUtils.htmlEscape(consultation.getProjectLocation() != null ? consultation.getProjectLocation() : "Not specified");
+        String estimatedBudget = HtmlUtils.htmlEscape(consultation.getEstimatedBudget() != null ? consultation.getEstimatedBudget() : "Not specified");
+        String preferredTimeline = HtmlUtils.htmlEscape(consultation.getPreferredTimeline() != null ? consultation.getPreferredTimeline() : "Not specified");
+        String projectDetails = HtmlUtils.htmlEscape(consultation.getProjectDetails());
+
+        String photosBlock = photoCount > 0
+            ? "<p style='color: #27ae60;'><strong>📷 Attached photos:</strong> " + photoCount + "</p>"
+            : "";
+
+        return String.format("""
+            <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px;">
+                <div style="max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
+                    <h2 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
+                        New Consultation Request
+                    </h2>
+                    
+                    <table style="width: 100%%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Customer:</strong></td>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;">%s %s</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Email:</strong></td>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="mailto:%s">%s</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>Phone:</strong></td>
+                            <td style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="tel:%s">%s</a></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="color: #2c3e50; margin-top: 20px;">Project Details</h3>
+                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
+                        <p style="margin: 5px 0;"><strong>Type:</strong> %s</p>
+                        <p style="margin: 5px 0;"><strong>Location:</strong> %s</p>
+                        <p style="margin: 5px 0;"><strong>Budget:</strong> %s</p>
+                        <p style="margin: 5px 0;"><strong>Timeline:</strong> %s</p>
+                    </div>
+
+                    <h3 style="color: #2c3e50; margin-top: 20px;">Message</h3>
+                    <p style="white-space: pre-wrap; background-color: #fff; border: 1px solid #eee; padding: 10px;">%s</p>
+
+                    %s
+
+                    <div style="margin-top: 30px; font-size: 12px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+                        Request ID: #%d | Received: %s
+                    </div>
+                </div>
+            </body>
+            </html>
+            """,
+            firstName, lastName,
+            consultation.getEmail(), email,
+            consultation.getPhone() != null ? consultation.getPhone() : "", phone,
+            projectType, projectLocation, estimatedBudget, preferredTimeline,
+            projectDetails,
+            photosBlock,
+            consultation.getId(),
+            consultation.getCreatedAt()
+        );
     }
 }

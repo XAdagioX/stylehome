@@ -57,10 +57,6 @@ const defaultFooterConfig: FooterConfig = {
     {
       text: '+1 (360) 859 6482',
       href: 'tel:+13608596482'
-    },
-    {
-      text: 'stylehomesusa@icloud.com',
-      href: 'mailto:stylehomesusa@icloud.com'
     }
   ],
   socials: [
