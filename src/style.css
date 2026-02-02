@@ -90,7 +90,7 @@ body {
 
 .header__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -190,6 +190,8 @@ body {
     /* Reduced distance between phone and icons */
     flex: 0 0 auto;
     /* Prevents actions from shrinking */
+    margin-left: auto;
+    /* Push to the right */
     margin-right: 0;
     /* Margin from right edge via container padding */
     order: 3;
@@ -265,10 +267,10 @@ body {
     z-index: 1001;
     flex-shrink: 0;
     /* Prevents shrinking */
-    order: 2;
-    /* Place to the right after navigation */
-    margin-left: auto;
-    /* Push away from navigation */
+    order: 4;
+    /* Place after actions (phone icon is in actions with order: 3) - so burger is rightmost */
+    margin-left: 0;
+    /* No auto margin, let order handle positioning */
     transition: none;
     /* No transition for instant show/hide */
 }
@@ -657,7 +659,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .header {
         padding: 15px 0;
     }
@@ -3281,7 +3283,7 @@ video {
 .header__phone-btn {
     background-color: #8b0000;
     color: #fff;
-    padding: 12px;
+    padding: 0;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -3290,13 +3292,13 @@ video {
     display: none; /* Hidden by default, shown on mobile */
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
 }
 
 .header__phone-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     fill: currentColor;
 }
 

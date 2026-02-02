@@ -26,8 +26,8 @@ export function initAutoBurgerMenu(): void {
       return;
     }
 
-    // Check only on desktop (width > 768px)
-    if (window.innerWidth <= 768) {
+    // Check only on desktop (width > 850px)
+    if (window.innerWidth <= 850) {
       (burger as HTMLElement).style.display = 'flex';
       if (!isMenuOpen) {
         nav.style.display = 'none';
