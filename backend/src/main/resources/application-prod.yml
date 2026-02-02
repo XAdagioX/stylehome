@@ -26,7 +26,7 @@ spring:
   mail:
     host: ${MAIL_HOST:smtp.mail.me.com}
     port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:chaikataras@icloud.com}
+    username: ${MAIL_USERNAME:stylehomesusa@icloud.com}
     password: ${MAIL_PASSWORD:}
     properties:
       mail:
@@ -45,8 +45,8 @@ server:
 # Application configuration
 app:
   email:
-    from: ${MAIL_FROM:chaikataras@icloud.com}
-    admin: ${ADMIN_EMAIL:chaikataras@icloud.com}
+    from: ${MAIL_FROM:stylehomesusa@icloud.com}
+    admin: ${ADMIN_EMAIL:stylehomesusa@icloud.com}
   cors:
     # For production, specify your actual domain(s)
     allowed-origins: ${CORS_ORIGINS:https://stylehomesusa.com,https://www.stylehomesusa.com}

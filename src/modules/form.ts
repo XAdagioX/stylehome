@@ -8,6 +8,89 @@ let uploadedPhotos: File[] = [];
 // Store timestamp when form was rendered (for anti-spam)
 let formRenderedAt: number = Date.now();
 
+// Photo upload limits
+const PHOTO_LIMITS = {
+  maxPhotos: 5,
+  maxSizePerPhoto: 10 * 1024 * 1024, // 10MB
+  allowedTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif'],
+  allowedExtensions: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.heic', '.heif']
+};
+
+/** Format file size to human readable string */
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+/** Get total size of uploaded photos */
+function getTotalPhotosSize(): number {
+  return uploadedPhotos.reduce((sum, file) => sum + file.size, 0);
+}
+
+/** Check if file is HEIC/HEIF format */
+function isHeicFile(file: File): boolean {
+  const type = file.type.toLowerCase();
+  const name = file.name.toLowerCase();
+  return type === 'image/heic' || type === 'image/heif' || 
+         name.endsWith('.heic') || name.endsWith('.heif');
+}
+
+/** Convert HEIC file to JPEG (dynamic import) */
+async function convertHeicToJpeg(file: File): Promise<File> {
+  try {
+    const heic2any = (await import('heic2any')).default;
+    const blob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 });
+    const resultBlob = Array.isArray(blob) ? blob[0] : blob;
+    const newName = file.name.replace(/\.heic$/i, '.jpg').replace(/\.heif$/i, '.jpg');
+    return new File([resultBlob], newName, { type: 'image/jpeg' });
+  } catch (error) {
+    console.error('HEIC conversion failed:', error);
+    throw new Error(`Failed to convert ${file.name}. Please try a different image.`);
+  }
+}
+
+/** Update photo counter display */
+function updatePhotoCounter(): void {
+  const counterEl = document.getElementById('photoCounter');
+  if (!counterEl) return;
+  
+  const count = uploadedPhotos.length;
+  const totalSize = getTotalPhotosSize();
+  
+  if (count === 0) {
+    counterEl.textContent = '';
+    counterEl.style.display = 'none';
+  } else {
+    counterEl.textContent = `${count}/${PHOTO_LIMITS.maxPhotos} photos • ${formatFileSize(totalSize)}`;
+    counterEl.style.display = 'inline-block';
+  }
+}
+
+/** Create photo counter and limits info */
+function ensurePhotoCounterAndInfo(): void {
+  const fileLabel = document.querySelector('label[for="photos"]');
+  if (!fileLabel) return;
+  
+  // Add counter span
+  if (!document.getElementById('photoCounter')) {
+    const counter = document.createElement('span');
+    counter.id = 'photoCounter';
+    counter.style.cssText = 'margin-left: 10px; font-size: 13px; color: #666; font-weight: normal;';
+    fileLabel.appendChild(counter);
+  }
+  
+  // Add limits info
+  const fileInput = document.getElementById('photos');
+  if (fileInput && !document.getElementById('photoLimitsInfo')) {
+    const limitsInfo = document.createElement('div');
+    limitsInfo.id = 'photoLimitsInfo';
+    limitsInfo.style.cssText = 'font-size: 12px; color: #888; margin-top: 6px; line-height: 1.4;';
+    limitsInfo.innerHTML = `Max ${PHOTO_LIMITS.maxPhotos} photos • Up to ${formatFileSize(PHOTO_LIMITS.maxSizePerPhoto)} each<br>Formats: JPG, PNG, WEBP, GIF, HEIC (iPhone photos auto-converted)`;
+    fileInput.parentElement?.appendChild(limitsInfo);
+  }
+}
+
 /**
  * Initialize automatic textarea resize
  */
@@ -103,41 +186,66 @@ function initPhotoUpload(): void {
   
   if (!fileInput || !previewContainer) return;
   
+  // Create counter and limits info
+  ensurePhotoCounterAndInfo();
+  
   // Handle file selection
-  fileInput.addEventListener('change', (e) => {
+  fileInput.addEventListener('change', async (e) => {
     const target = e.target as HTMLInputElement;
     if (!target.files) return;
     
     const files = Array.from(target.files);
     
-    // Validate file types and sizes
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
-    
-    files.forEach((file) => {
-      if (!allowedTypes.includes(file.type)) {
-        alert(`File ${file.name} is not supported. Please select an image (JPG, PNG, WEBP, GIF).`);
-        return;
+    for (const originalFile of files) {
+      let file = originalFile;
+      
+      // Check max photos limit
+      if (uploadedPhotos.length >= PHOTO_LIMITS.maxPhotos) {
+        alert(`Maximum ${PHOTO_LIMITS.maxPhotos} photos allowed.`);
+        break;
       }
       
-      if (file.size > maxSize) {
-        alert(`File ${file.name} is too large. Maximum size: 10MB.`);
-        return;
+      // Check file type (including extension for HEIC)
+      const ext = '.' + file.name.split('.').pop()?.toLowerCase();
+      const isValidType = PHOTO_LIMITS.allowedTypes.includes(file.type.toLowerCase()) ||
+                          PHOTO_LIMITS.allowedExtensions.includes(ext);
+      
+      if (!isValidType) {
+        alert(`File ${file.name} is not supported. Please select JPG, PNG, WEBP, GIF, or HEIC.`);
+        continue;
+      }
+      
+      // Convert HEIC to JPEG
+      if (isHeicFile(file)) {
+        try {
+          file = await convertHeicToJpeg(file);
+        } catch (error) {
+          alert(error instanceof Error ? error.message : 'HEIC conversion failed');
+          continue;
+        }
+      }
+      
+      // Check file size
+      if (file.size > PHOTO_LIMITS.maxSizePerPhoto) {
+        alert(`File ${file.name} is too large (${formatFileSize(file.size)}). Max: ${formatFileSize(PHOTO_LIMITS.maxSizePerPhoto)}`);
+        continue;
       }
       
       // Add to uploaded photos array
       uploadedPhotos.push(file);
+      updatePhotoCounter();
       
       // Create preview
+      const currentFile = file;
       const reader = new FileReader();
       reader.onload = (e) => {
         const photoItem = document.createElement('div');
         photoItem.className = 'form__photo-item';
-        photoItem.dataset.fileName = file.name;
+        photoItem.dataset.fileName = currentFile.name;
         
         const img = document.createElement('img');
         img.src = e.target?.result as string;
-        img.alt = file.name;
+        img.alt = currentFile.name;
         
         const removeBtn = document.createElement('button');
         removeBtn.className = 'form__photo-remove';
@@ -145,10 +253,11 @@ function initPhotoUpload(): void {
         removeBtn.setAttribute('aria-label', 'Remove photo');
         removeBtn.addEventListener('click', () => {
           // Remove from array
-          uploadedPhotos = uploadedPhotos.filter(f => f !== file);
+          uploadedPhotos = uploadedPhotos.filter(f => f !== currentFile);
           // Remove from DOM
           photoItem.remove();
-          // Update file input
+          // Update counter and file input
+          updatePhotoCounter();
           updateFileInput();
         });
         
@@ -158,7 +267,7 @@ function initPhotoUpload(): void {
       };
       
       reader.readAsDataURL(file);
-    });
+    }
     
     // Clear file input to allow selecting the same file again
     fileInput.value = '';
@@ -248,6 +357,7 @@ function initFormValidation(): void {
         if (previewContainer) {
           previewContainer.innerHTML = '';
         }
+        updatePhotoCounter();
         
       } catch (error) {
         console.error('Form submission error:', error);

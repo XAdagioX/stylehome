@@ -29,11 +29,12 @@ public class SpamProtectionService {
     private static final long MAX_FORM_TIME_MS = 3_600_000; // 1 hour maximum
     
     // Photo restrictions
-    private static final int MAX_PHOTOS = 10;
+    private static final int MAX_PHOTOS = 5;
     private static final long MAX_PHOTO_SIZE_BYTES = 10 * 1024 * 1024; // 10MB per photo
     private static final long MAX_TOTAL_PHOTOS_SIZE_BYTES = 50 * 1024 * 1024; // 50MB total
     private static final Set<String> ALLOWED_MIME_TYPES = Set.of(
-        "image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif"
+        "image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif",
+        "image/heic", "image/heif" // iPhone default format
     );
     private static final Set<String> FORBIDDEN_EXTENSIONS = Set.of(
         ".exe", ".bat", ".cmd", ".sh", ".php", ".js", ".html", ".htm",
