@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stylehomesusa.com/sitemap.xml
+
+# Disallow admin/API paths
+Disallow: /api/
