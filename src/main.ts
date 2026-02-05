@@ -34,6 +34,48 @@ function hidePageLoader() {
 
 // Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize smooth video start (only on first load)
+  const heroVideo = document.querySelector<HTMLVideoElement>('.hero__video');
+  if (heroVideo) {
+    let hasStartedSmooth = false;
+    
+    // Start with slow playback rate
+    heroVideo.playbackRate = 0.3;
+    
+    // When video is ready to play, smoothly increase speed
+    const smoothStart = () => {
+      if (hasStartedSmooth) return;
+      hasStartedSmooth = true;
+      
+      const startRate = 0.3;
+      const endRate = 1.0;
+      const duration = 2000; // 2 seconds
+      const startTime = performance.now();
+      
+      const animateSpeed = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic for smooth deceleration
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        heroVideo.playbackRate = startRate + (endRate - startRate) * easeProgress;
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateSpeed);
+        }
+      };
+      
+      requestAnimationFrame(animateSpeed);
+    };
+    
+    // Listen for canplay event (video ready)
+    heroVideo.addEventListener('canplay', smoothStart, { once: true });
+    
+    // Fallback: if video already loaded
+    if (heroVideo.readyState >= 3) {
+      smoothStart();
+    }
+  }
+  
   // CRITICAL: Ensure header and all its children are visible immediately
   // This prevents any CSS/JS issues from hiding content
   const header = document.querySelector<HTMLElement>('.header');
