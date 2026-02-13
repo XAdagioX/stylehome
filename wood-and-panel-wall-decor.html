@@ -156,6 +156,108 @@
             </div>
         </section>
 
+        <!-- Consultation Form Section -->
+        <section class="consultation" id="consultation" data-aos="fade-up">
+            <div class="consultation__container">
+                <div class="consultation__card" data-aos="zoom-in" data-aos-delay="100">
+                    <h2 class="consultation__title">Get Your Free Wood and Panel Wall Decor Consultation Today</h2>
+                    <p class="consultation__description">
+                        Fill out the form below, and one of our experts will contact you shortly to provide personalized advice and solutions for your wood and panel wall decor project.
+                    </p>
+                    
+                    <form class="consultation__form" action="#" method="POST">
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="firstName" class="form__label">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" class="form__input" placeholder="Add your name" required>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="lastName" class="form__label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form__input" placeholder="Add your last name">
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="email" class="form__label">Email *</label>
+                                <input type="email" id="email" name="email" class="form__input" placeholder="Email" required>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="phone" class="form__label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="000 000 0000">
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="projectType" class="form__label">Project Type *</label>
+                                <select id="projectType" name="projectType" class="form__select" required>
+                                    <option value="">Select</option>
+                                    <option value="kitchen" selected>Wood and Panel Wall Decor</option>
+                                    <option value="bathroom">Bathroom Renovation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="location" class="form__label">Project Location</label>
+                                <input type="text" id="location" name="location" class="form__input" placeholder="Your Location">
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="budget" class="form__label">Estimated Budget</label>
+                                <select id="budget" name="budget" class="form__select">
+                                    <option value="">Select</option>
+                                    <option value="under-5k">Under $5k</option>
+                                    <option value="5k-10k">$5k — $10k</option>
+                                    <option value="10k-25k">$10k — $25k</option>
+                                    <option value="25k-50k">$25k — $50k</option>
+                                    <option value="50k-100k-plus">$50k — $100k+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="timeline" class="form__label">Preferred Timeline To Start</label>
+                                <select id="timeline" name="timeline" class="form__select">
+                                    <option value="">Select</option>
+                                    <option value="14-days">Within 14 days</option>
+                                    <option value="1-2-months">Within 1-2 months</option>
+                                    <option value="3-6-months">3-6 months</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form__group form__group--full">
+                            <label for="details" class="form__label">Project Details *</label>
+                            <textarea id="details" name="details" class="form__textarea" placeholder="Describe your wood and panel wall decor project" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form__group form__group--full">
+                            <label for="photos" class="form__label">Upload Photos (Optional)</label>
+                            <input type="file" id="photos" name="photos" class="form__file-input" 
+                                accept="image/*" multiple>
+                            <div class="form__photos-preview" id="photosPreview"></div>
+                        </div>
+
+                        <!-- Honeypot field - hidden from humans, filled by bots -->
+                        <div class="form__group form__group--honeypot" aria-hidden="true">
+                            <label for="companyName" class="form__label">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" class="form__input"
+                                tabindex="-1" autocomplete="off">
+                        </div>
+                        
+                        <button type="submit" class="form__submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
         <!-- Projects Section -->
         <section class="projects" id="projects" data-aos="fade-up">
             <div class="projects__container">
@@ -343,106 +445,6 @@
                         </p>
                     </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- Consultation Form Section -->
-        <section class="consultation" id="consultation" data-aos="fade-up">
-            <div class="consultation__container">
-                <div class="consultation__card" data-aos="zoom-in" data-aos-delay="100">
-                    <h2 class="consultation__title">Get Your Free Wood and Panel Wall Decor Consultation Today</h2>
-                    <p class="consultation__description">
-                        Fill out the form below, and one of our experts will contact you shortly to provide personalized advice and solutions for your wood and panel wall decor project.
-                    </p>
-                    
-                    <form class="consultation__form" action="#" method="POST">
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="firstName" class="form__label">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" class="form__input" placeholder="Add your name" required>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="lastName" class="form__label">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" class="form__input" placeholder="Add your last name">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="email" class="form__label">Email *</label>
-                                <input type="email" id="email" name="email" class="form__input" placeholder="Email" required>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="phone" class="form__label">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="000 000 0000">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="projectType" class="form__label">Project Type *</label>
-                                <select id="projectType" name="projectType" class="form__select" required>
-                                    <option value="">Select</option>
-                                    <option value="kitchen" selected>Wood and Panel Wall Decor</option>
-                                    <option value="bathroom">Bathroom Renovation</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="location" class="form__label">Project Location</label>
-                                <input type="text" id="location" name="location" class="form__input" placeholder="Your Location">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="budget" class="form__label">Estimated Budget</label>
-                                <select id="budget" name="budget" class="form__select">
-                                    <option value="">Select</option>
-                                    <option value="under-5k">Under $5k</option>
-                                    <option value="5k-10k">$5k — $10k</option>
-                                    <option value="10k-25k">$10k — $25k</option>
-                                    <option value="25k-50k">$25k — $50k</option>
-                                    <option value="50k-100k-plus">$50k — $100k+</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="timeline" class="form__label">Preferred Timeline To Start</label>
-                                <select id="timeline" name="timeline" class="form__select">
-                                    <option value="">Select</option>
-                                    <option value="14-days">Within 14 days</option>
-                                    <option value="1-2-months">Within 1-2 months</option>
-                                    <option value="3-6-months">3-6 months</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form__group form__group--full">
-                            <label for="details" class="form__label">Project Details *</label>
-                            <textarea id="details" name="details" class="form__textarea" placeholder="Describe your wood and panel wall decor project" rows="4" required></textarea>
-                        </div>
-
-                        <div class="form__group form__group--full">
-                            <label for="photos" class="form__label">Upload Photos (Optional)</label>
-                            <input type="file" id="photos" name="photos" class="form__file-input" 
-                                accept="image/*" multiple>
-                            <div class="form__photos-preview" id="photosPreview"></div>
-                        </div>
-
-                        <!-- Honeypot field - hidden from humans, filled by bots -->
-                        <div class="form__group form__group--honeypot" aria-hidden="true">
-                            <label for="companyName" class="form__label">Company Name</label>
-                            <input type="text" id="companyName" name="companyName" class="form__input"
-                                tabindex="-1" autocomplete="off">
-                        </div>
-                        
-                        <button type="submit" class="form__submit">Send</button>
-                    </form>
                 </div>
             </div>
         </section>
