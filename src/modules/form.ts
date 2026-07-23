@@ -350,6 +350,11 @@ function initFormValidation(): void {
         // Show success message
         showFormMessage('Thank you! Your message has been sent. We will contact you soon.', 'success');
         
+        // Google Ads conversion (form submit)
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', { send_to: 'AW-17691818553/ads_conversion_1' });
+        }
+        
         // Reset form
         form.reset();
         uploadedPhotos = [];
