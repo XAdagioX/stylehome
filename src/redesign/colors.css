@@ -1,0 +1,78 @@
+/* ============================================================
+   COLOR TOKENS
+   Anchor: deep crimson #8B0000 (unchanged brand signature).
+   Neutrals: warm "clay" ramp — soft charcoal → warm off-white,
+   not pure gray, so the crimson reads premium, not corporate-alert.
+   Gold: secondary accent, ratings/awards only.
+   ============================================================ */
+:root {
+  /* ---- Brand · Crimson (600 = anchor #8B0000) ---- */
+  --crimson-50:  #FBF2F0;
+  --crimson-100: #F3DDD8;
+  --crimson-200: #E4B7AF;
+  --crimson-300: #D28B80;
+  --crimson-400: #BB574C;
+  --crimson-500: #A02A21;
+  --crimson-600: #8B0000; /* ANCHOR */
+  --crimson-700: #720000;
+  --crimson-800: #590000;
+  --crimson-900: #420000;
+
+  /* ---- Warm neutrals · Clay ---- */
+  --clay-950: #17110C;
+  --clay-900: #221B14; /* deepest ink / footer */
+  --clay-800: #2E2720; /* headings */
+  --clay-700: #40382F;
+  --clay-600: #574C41; /* body */
+  --clay-500: #796D5F; /* muted */
+  --clay-400: #9C8F7F; /* subtle / placeholder */
+  --clay-300: #C3B6A5;
+  --clay-200: #E1D7C8; /* hairline strong */
+  --clay-150: #ECE3D6; /* hairline */
+  --clay-100: #F4ECE0; /* sand surface */
+  --clay-50:  #FAF5ED; /* soft paper */
+  --paper:    #FDFBF7; /* page */
+  --white:    #FFFFFF;
+
+  /* ---- Gold · secondary accent (ratings only) ---- */
+  --gold-300: #FCD34D;
+  --gold-400: #FBBF24;
+  --gold-500: #DFA109;
+  --gold-600: #B07E08; /* AA text on light */
+
+  /* ---- Support · semantic states ---- */
+  --success:   #2F7D5B;
+  --error:     #B23127;
+  --error-bg:  #FAECEA;
+  --error-line:#E6A9A2;
+
+  /* ============ SEMANTIC ALIASES ============ */
+  --brand:         var(--crimson-600);
+  --brand-hover:   var(--crimson-700);
+  --brand-active:  var(--crimson-800);
+  --brand-wash:    var(--crimson-50);
+  --brand-tint:    var(--crimson-100);
+
+  --text-strong:   var(--clay-900);
+  --text-heading:  var(--clay-800);
+  --text-body:     var(--clay-600);
+  --text-muted:    var(--clay-500);
+  --text-subtle:   var(--clay-400);
+  --text-on-brand: #FCEEEB;
+  --text-on-dark:  #E9DFD1;
+  --text-on-dark-muted: #B3A692;
+
+  --surface-page:    var(--paper);
+  --surface-sand:    var(--clay-100);
+  --surface-cream:   var(--clay-50);
+  --surface-card:    var(--white);
+  --surface-inverse: var(--clay-900);
+
+  --line:          var(--clay-150);
+  --line-strong:   var(--clay-200);
+  --line-on-dark:  rgba(255,255,255,0.12);
+
+  --accent-gold:   var(--gold-400);
+
+  --focus-ring: color-mix(in srgb, var(--crimson-600) 42%, transparent);
+}

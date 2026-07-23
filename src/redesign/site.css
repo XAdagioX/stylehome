@@ -1,0 +1,77 @@
+/* ============================================================
+   SITE — production-only additions on top of the design system.
+   Kept separate so the imported design-system CSS stays pristine.
+   1) Split hero for the VERTICAL (9:16) hero video:
+      - mobile  → full-bleed vertical video, white text over it
+        (a portrait clip fills a portrait screen with no crop)
+      - desktop → two-column cover: warm editorial text side +
+        the portrait video framed on the right (never cropped)
+   2) Live reviews shell (strip the design placeholder chrome).
+   ============================================================ */
+
+/* ---- Hero video element fills its .media box ---- */
+.hero__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+
+/* ============ HOME SPLIT HERO ============ */
+/* Mobile-first: inherits the base .hero full-bleed cover — the vertical
+   video fills the portrait viewport natively. Nothing to override here. */
+
+@media (min-width: 900px) {
+  .hero--home {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+    gap: clamp(2rem, 0.5rem + 4vw, 5rem);
+    text-align: left;
+    min-height: 100svh;
+    /* warm editorial cover — keeps the transparent white header readable */
+    background: linear-gradient(152deg, #3d2e23 0%, #2c2119 56%, #1d1611 100%);
+    /* center content to the container width */
+    padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2));
+    padding-block: calc(var(--header-h) + 2.5rem) 4rem;
+  }
+  .hero--home .hero__overlay { display: none; }
+  .hero--home .hero__scroll { display: none; }
+
+  .hero--home .hero__inner {
+    grid-column: 1;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 34ch;
+    margin: 0;
+  }
+  .hero--home .hero__location { align-items: flex-start; }
+  .hero--home .hero__location::before { align-self: flex-start; }
+
+  /* the portrait video, framed on the right */
+  .hero--home .hero__media {
+    grid-column: 2;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+    max-height: 80svh;
+    margin-inline: auto 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    background: #1d1611;
+  }
+}
+
+/* Very large screens — hold the frame from getting oversized */
+@media (min-width: 1400px) {
+  .hero--home .hero__media { max-width: 430px; }
+}
+
+/* ============ LIVE REVIEWS ============ */
+/* The design placeholder gave .reviews__embed a dashed box + note.
+   In production the Elfsight widget renders here, so strip the chrome. */
+.reviews__embed--live {
+  border: none;
+  background: transparent;
+  min-height: 0;
+  padding: 0;
+  display: block;
+}

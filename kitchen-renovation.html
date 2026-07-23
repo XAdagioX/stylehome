@@ -1,31 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitchen Remodeling in Portland OR & Vancouver WA | Style Homes LLC</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Expert kitchen remodeling in Portland OR and Vancouver WA. Custom cabinets, countertops, modern designs. Licensed contractors. Free consultation.">
+    <meta name="description" content="Expert kitchen remodeling in Portland OR and Vancouver WA. Custom cabinets, countertops, and modern designs. Licensed contractors. Free consultation.">
+    <meta name="author" content="Style Homes LLC">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://stylehomesusa.com/kitchen-renovation">
-    
-    <!-- Open Graph -->
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stylehomesusa.com/kitchen-renovation">
     <meta property="og:title" content="Kitchen Remodeling in Portland OR & Vancouver WA | Style Homes LLC">
-    <meta property="og:description" content="Expert kitchen remodeling in Portland OR and Vancouver WA. Custom cabinets, countertops, modern designs. Free consultation.">
+    <meta property="og:description" content="Expert kitchen remodeling in Portland OR and Vancouver WA. Custom cabinets, countertops, and modern designs. Licensed contractors. Free consultation.">
     <meta property="og:image" content="https://stylehomesusa.com/img/kitchen-renovation.jpg">
-    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://stylehomesusa.com/img/kitchen-renovation.jpg">
-    
+
+    <!-- Service Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Kitchen Remodeling",
+      "name": "Kitchen Remodeling in Portland OR & Vancouver WA",
+      "description": "Custom and budget-friendly kitchen renovation — cabinets, countertops, and full installation. Licensed contractors serving Portland OR and Vancouver WA.",
+      "url": "https://stylehomesusa.com/kitchen-renovation",
+      "image": "https://stylehomesusa.com/img/kitchen-renovation.jpg",
+      "provider": {
+        "@type": "GeneralContractor",
+        "name": "Style Homes LLC",
+        "telephone": "+1-360-859-6482",
+        "url": "https://stylehomesusa.com",
+        "priceRange": "$$"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Portland", "addressRegion": "OR" },
+        { "@type": "City", "name": "Vancouver", "addressRegion": "WA" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://stylehomesusa.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://stylehomesusa.com/#services" },
+        { "@type": "ListItem", "position": 3, "name": "Kitchen Renovation", "item": "https://stylehomesusa.com/kitchen-renovation" }
+      ]
+    }
+    </script>
+
+    <!-- Backend API URL Configuration -->
+    <script>
+      // window.BACKEND_URL = 'http://localhost:8080';  // Uncomment for local dev
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="js/libs/aos.css">
-    <script src="js/libs/aos.js"></script>
-    <script src="js/libs/anime.min.js"></script>
+
+    <!-- Fonts: Newsreader (display) + Hanken Grotesk (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17691818553"></script>
     <script>
@@ -34,413 +81,374 @@
       gtag('js', new Date());
       gtag('config', 'AW-17691818553');
     </script>
-    <script type="module" src="/src/entry.tsx"></script>
+
+    <script type="module" src="/src/redesign/main.ts"></script>
 </head>
+
 <body>
-    <!-- Loading Screen -->
-    <div class="page-loader" id="pageLoader">
-        <div class="page-loader__content">
-            <img src="img/logo-red.svg" alt="Style Homes" class="page-loader__logo">
-            <div class="page-loader__spinner"></div>
-        </div>
+
+<!-- ============ PAGE LOADER ============ -->
+<div class="loader" aria-hidden="true">
+  <img src="img/logo-red.svg" alt="Style Homes">
+  <div class="loader__bar"></div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="index.html" class="site-header__logo" aria-label="Style Homes — home"><img src="img/logo-red.svg" alt="Style Homes"></a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <button class="site-header__nav-close" aria-label="Close menu"><i data-lucide="x"></i></button>
+      <ul class="site-header__nav-list">
+        <li><a class="site-header__link" href="index.html#hero">Home</a></li>
+        <li><a class="site-header__link" href="index.html#about">About</a></li>
+        <li><a class="site-header__link is-active" href="index.html#services">Services</a></li>
+        <li><a class="site-header__link" href="index.html#projects">Projects</a></li>
+        <li><a class="site-header__link" href="index.html#testimonials">Reviews</a></li>
+        <li><a class="site-header__link" href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__actions">
+      <a class="site-header__icon" href="https://www.instagram.com/style_homes_usa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a class="site-header__icon" href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a class="site-header__icon" href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678" target="_blank" rel="noopener" aria-label="Thumbtack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v6.5a3 3 0 0 0 1 2.2l1 1H7l1-1a3 3 0 0 0 1-2.2Z"/><path d="M6.5 4h11"/><path d="M12 16.7V22"/></svg></a>
+      <a class="site-header__phone" href="tel:+13608596482"><i data-lucide="phone"></i><span>+1 (360) 859 6482</span></a>
+      <button class="site-header__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-    <!-- Inline styles for loader (prevents FOUC) -->
-    <style>
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
-        .page-loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .page-loader__content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-        .page-loader__logo {
-            height: 80px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        .page-loader__spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #c8102e;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.98); }
-        }
-    </style>
-    <!-- Fallback: hide loader after 5s even if script fails -->
-    <script>
-        setTimeout(function() {
-            var loader = document.getElementById('pageLoader');
-            if (loader && !loader.classList.contains('hidden')) {
-                loader.classList.add('hidden');
-            }
-        }, 5000);
-    </script>
+  </div>
+</header>
 
-    <header class="header">
-        <div class="header__container">
-            <a href="/" class="header__logo">
-                <img src="/img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
-            </a>
-            <nav class="header__nav">
-                <button class="header__nav-close" aria-label="Close menu">
-                    <span class="header__nav-close-line"></span>
-                    <span class="header__nav-close-line"></span>
-                </button>
-                <ul class="header__nav-list">
-                    <li><a href="/#hero" class="header__nav-link">Home</a></li>
-                    <li><a href="/#about" class="header__nav-link">About</a></li>
-                    <li><a href="/#services" class="header__nav-link">Services</a></li>
-                    <li><a href="/#projects" class="header__nav-link">Projects</a></li>
-                    <li><a href="/#testimonials" class="header__nav-link">Testimonials</a></li>
-                    <li><a href="/#faq" class="header__nav-link">FAQ</a></li>
-                </ul>
-            </nav>
-            <div class="header__actions">
-                <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="header__icon">
-                    <img src="img/instagram.avif" alt="Instagram" />
-                </a>
-                <a href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" class="header__icon">
-                    <img src="img/facebook.svg" alt="Facebook" />
-                </a>
-                <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
-                    target="_blank" class="header__icon">
-                    <img src="img/thumbtack.avif" alt="Thumbtack" />
-                </a>
-                <a href="tel:+13608596482" class="header__phone">+1 (360) 859 6482</a>
-            </div>
-            <button class="header__burger" aria-label="Toggle menu" aria-expanded="false">
-                <span class="header__burger-line"></span>
-                <span class="header__burger-line"></span>
-                <span class="header__burger-line"></span>
-            </button>
+<main>
+  <!-- ============ HERO (subpage) ============ -->
+  <section class="hero hero--sub" id="hero">
+    <div class="hero__media media"><img src="img/kitchen-renovation.webp" alt="Kitchen renovation — Portland OR" fetchpriority="high" decoding="async"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__inner">
+      <span class="hero__badge">You imagine it, <strong>STYLE HOMES</strong> creates it!</span>
+      <p class="hero__location">Portland OR &amp; Vancouver WA</p>
+      <h1 class="hero__title">KITCHEN RENOVATION</h1>
+      <p class="hero__subtitle">Smart Investment • Quality Craftsmanship</p>
+      <a class="btn btn--primary btn--lg hero__cta" href="#consultation">Book a free consultation <i data-lucide="arrow-right"></i></a>
+    </div>
+    <a class="hero__scroll" href="#content" aria-label="Scroll down"><i data-lucide="chevron-down"></i></a>
+  </section>
+
+  <!-- ============ CONTENT ============ -->
+  <section class="section section--white about" id="content">
+    <div class="container about__inner">
+      <div class="about__body" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><i data-lucide="chevron-right"></i>
+          <a href="index.html#services">Services</a><i data-lucide="chevron-right"></i>
+          <span aria-current="page">Kitchen Renovation</span>
+        </nav>
+        <p class="eyebrow">Kitchen Renovation</p>
+        <h2 class="about__title">Kitchens built to be lived in</h2>
+        <p class="about__lead">We create kitchens for every need — from exclusive custom projects designed entirely to the homeowner's vision, to budget-friendly options with standard cabinets that we also offer for sale.</p>
+        <div class="about__text">
+          <p>Our team has extensive experience working with all types of countertops — from classic granite and natural stone to modern materials of any complexity. We aim to deliver kitchens that are not only beautiful and functional but also durable, ensuring that every detail will serve you reliably and bring joy for years to come.</p>
         </div>
-    </header>
-    
-    <main class="main">
-        <!-- Hero Section -->
-        <section class="hero hero--subpage" id="hero">
-            <div class="hero__video-wrapper">
-                <div class="hero__image-bg">
-                    <img src="/img/kitchen-renovation.jpg" alt="Kitchen Renovation" />
-                </div>
-                <div class="hero__overlay"></div>
-            </div>
-            <div class="hero__content">
-                <div class="hero__badge">
-                    You imagine it,<br>
-                    <strong>STYLE HOMES</strong> creates it!
-                </div>
-                
-                <div class="hero__card">
-                    <h1 class="hero__title">KITCHEN RENOVATION</h1>
-                    <p class="hero__subtitle">Smart Investment • Quality Craftsmanship</p>
-                    <p class="hero__location">Portland OR & Vancouver WA</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Consultation Form Section -->
-        <section class="consultation" id="consultation" data-aos="fade-up">
-            <div class="consultation__container">
-                <div class="consultation__card" data-aos="zoom-in" data-aos-delay="100">
-                    <h2 class="consultation__title">Get Your Free Kitchen Consultation Today</h2>
-                    <p class="consultation__description">
-                        Fill out the form below, and one of our experts will contact you shortly to provide personalized advice and solutions for your kitchen renovation project.
-                    </p>
-                    
-                    <form class="consultation__form" action="#" method="POST">
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="firstName" class="form__label">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" class="form__input" placeholder="Add your name" required>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="lastName" class="form__label">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" class="form__input" placeholder="Add your last name">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="email" class="form__label">Email *</label>
-                                <input type="email" id="email" name="email" class="form__input" placeholder="Email" required>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="phone" class="form__label">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="000 000 0000">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="projectType" class="form__label">Project Type *</label>
-                                <select id="projectType" name="projectType" class="form__select" required>
-                                    <option value="">Select</option>
-                                    <option value="kitchen" selected>Kitchen Renovation</option>
-                                    <option value="bathroom">Bathroom Renovation</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="location" class="form__label">Project Location</label>
-                                <input type="text" id="location" name="location" class="form__input" placeholder="Your Location">
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="budget" class="form__label">Estimated Budget</label>
-                                <select id="budget" name="budget" class="form__select">
-                                    <option value="">Select</option>
-                                    <option value="under-5k">Under $5k</option>
-                                    <option value="5k-10k">$5k — $10k</option>
-                                    <option value="10k-25k">$10k — $25k</option>
-                                    <option value="25k-50k">$25k — $50k</option>
-                                    <option value="50k-100k-plus">$50k — $100k+</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="timeline" class="form__label">Preferred Timeline To Start</label>
-                                <select id="timeline" name="timeline" class="form__select">
-                                    <option value="">Select</option>
-                                    <option value="14-days">Within 14 days</option>
-                                    <option value="1-2-months">Within 1-2 months</option>
-                                    <option value="3-6-months">3-6 months</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form__group form__group--full">
-                            <label for="details" class="form__label">Project Details *</label>
-                            <textarea id="details" name="details" class="form__textarea" placeholder="Describe your kitchen renovation project" rows="4" required></textarea>
-                        </div>
-
-                        <div class="form__group form__group--full">
-                            <label for="photos" class="form__label">Upload Photos (Optional)</label>
-                            <input type="file" id="photos" name="photos" class="form__file-input" 
-                                accept="image/*" multiple>
-                            <div class="form__photos-preview" id="photosPreview"></div>
-                        </div>
-
-                        <!-- Honeypot field - hidden from humans, filled by bots -->
-                        <div class="form__group form__group--honeypot" aria-hidden="true">
-                            <label for="companyName" class="form__label">Company Name</label>
-                            <input type="text" id="companyName" name="companyName" class="form__input"
-                                tabindex="-1" autocomplete="off">
-                        </div>
-                        
-                        <button type="submit" class="form__submit">Send</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- Projects Section -->
-        <section class="projects" id="projects" data-aos="fade-up">
-            <div class="projects__container">
-                <h2 class="projects__title" data-aos="fade-up">Kitchen Projects</h2>
-                <h5 class="projects__subtitle" data-aos="fade-up" data-aos-delay="50">Our Kitchen Renovations</h5>
-
-                <div class="projects__grid">
-                    <!-- Project 1: Modern Kitchen Project — Built for Elite Home (6 photos) -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_1.jpg" alt="Modern Kitchen Elite Home 1" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_2.jpg" alt="Modern Kitchen Elite Home 2" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_3.jpg" alt="Modern Kitchen Elite Home 3" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_4.jpg" alt="Modern Kitchen Elite Home 4" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_5.jpg" alt="Modern Kitchen Elite Home 5" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen1/kitchen1_6.jpg" alt="Modern Kitchen Elite Home 6" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Modern Kitchen Project — Built for Elite Home</h3>
-                        <p class="project-card__description">
-                            This elegant black-and-white kitchen was completed in collaboration with DreamCabinets for Elite Home, a company known for building high-end modern homes. The property was sold immediately after being listed — a testament to the timeless design and attention to detail. The kitchen, all bedroom cabinets, interior doors, baseboards, and full millwork were designed and installed by StyleHomes and DreamCabinets. Together, we brought the designer's vision to life, combining precision craftsmanship with modern aesthetics. Our portfolio includes full project photo sets — from kitchen and cabinets to doors, shelves, and all finishing details — so you can see the complete transformation of each home we've worked on.
-                        </p>
-                    </div>
-
-                    <!-- Project 2: Modern Kitchen Installation — DreamCabinets Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen2/kitchen2_1.jpg" alt="DreamCabinets Kitchen Installation 1" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen2/kitchen2_2.jpg" alt="DreamCabinets Kitchen Installation 2" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Modern Kitchen Installation — DreamCabinets Project</h3>
-                        <p class="project-card__description">
-                            This modern kitchen was completed in collaboration with DreamCabinets. The cabinetry design and production were handled by DreamCabinets, while our team at StyleHomes performed the full cabinet installation with precision and craftsmanship. Our work included the installation of kitchen cabinets and additional cabinetry throughout the home. You can find more photos of this project in our Projects section, where we showcase the full scope of our installation work.
-                        </p>
-                    </div>
-
-                    <!-- Project 3: Modern White Kitchen — DreamCabinets Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen3/kitchen3_1.jpg" alt="Modern White Kitchen" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Modern White Kitchen — DreamCabinets Project</h3>
-                        <p class="project-card__description">
-                            This project was completed in collaboration with DreamCabinets. Although only one photo of the kitchen remains, our team at StyleHomes handled the cabinet installation throughout the entire home — including the kitchen, bathrooms, closets, and other custom areas. Located in a high-value neighborhood, this home stands out for its modern design and clean lines. We're proud to have contributed to this project by ensuring precise and professional installation that highlights the quality craftsmanship.
-                        </p>
-                    </div>
-
-                    <!-- Project 4: Professional Countertop Installation — Modern Kitchen Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen4/kitchen4_1.jpg" alt="Professional Countertop Installation" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Professional Countertop Installation — Modern Kitchen Project</h3>
-                        <p class="project-card__description">
-                            Our team consists of skilled professionals with extensive experience in installing countertops of any complexity — including quartz, granite, and natural stone surfaces with or without backsplashes. In this project, our partners and installers completed the precise installation of all kitchen countertops, ensuring clean lines, perfect alignment, and high-end finishing quality.
-                        </p>
-                    </div>
-
-                    <!-- Project 5: Modern Kitchen & Interior Installation — Elite Home Project -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen5/kitchen5_1.jpg" alt="Elite Home Kitchen & Interior" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Modern Kitchen & Interior Installation — Elite Home Project</h3>
-                        <p class="project-card__description">
-                            This modern home was completed in collaboration with DreamCabinets for Elite Home, a high-end residential builder. Our team at StyleHomes was responsible for the installation of all kitchen cabinets, decorative finishes, shelves, closets, and every interior door throughout the home. The result is a refined, cohesive design with exceptional attention to detail. You can view more photos of this project in our Projects section, where the full interior and millwork details are showcased.
-                        </p>
-                    </div>
-
-                    <!-- Project 6: Coastal Modern Home — Full Interior Project for BTN Homes (6 photos) -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_1.jpg" alt="BTN Homes Coastal Kitchen 1" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_2.jpg" alt="BTN Homes Coastal Kitchen 2" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_3.jpg" alt="BTN Homes Coastal Kitchen 3" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_4.jpg" alt="BTN Homes Coastal Kitchen 4" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_5.jpg" alt="BTN Homes Coastal Kitchen 5" loading="lazy" decoding="async">
-                                <img src="img/projects/kitchen/kitchen6/kitchen6_6.jpg" alt="BTN Homes Coastal Kitchen 6" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Coastal Modern Home — Full Interior Project for BTN Homes</h3>
-                        <p class="project-card__description">
-                            This project was completed for the developer BTN Homes. Our StyleHomes team carried out all the essential interior works, including cabinet installation, flooring, stairs, tile work, fireplace finishing, interior doors, and baseboards. The entire interior was completed with precision, combining craftsmanship and modern design to achieve a clean, elegant look that matches the style of BTN Homes. More photos of this project can be found in our Projects section.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer__section">
-            <div class="footer__container">
-                <div class="footer__brand">
-                    <a href="/" class="footer__logo">
-                        <img src="/img/logo-red.svg" alt="Style Homes Logo" />
-                    </a>
-                    <p class="footer__tagline">Smart Investment • Quality Craftsmanship</p>
-                    <div class="footer__socials">
-                        <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="footer__icon">
-                            <img src="img/social_ico/instagram.avif" alt="Instagram" loading="lazy" decoding="async">
-                        </a>
-                        <a href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" class="footer__icon">
-                            <img src="img/social_ico/facebook.svg" alt="Facebook" loading="lazy" decoding="async">
-                        </a>
-                        <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
-                            target="_blank" class="footer__icon">
-                            <img src="img/social_ico/thumbtack.avif" alt="Thumbtack" loading="lazy" decoding="async">
-                        </a>
-                    </div>
-                </div>
-                <div class="footer__contact">
-                    <h4 class="footer__title">Contact Us</h4>
-                    <ul class="footer__list">
-                        <li><a href="tel:+13608596482" class="footer__link">+1 (360) 859 6482</a></li>
-                        <li><a href="mailto:stylehomesusa@icloud.com" class="footer__link">stylehomesusa@icloud.com</a></li>
-                        <li>Portland, OR +50 miles</li>
-                        <li>Washington License: STYLEHL751CS</li>
-                        <li>Oregon CCB: 259642</li>
-                    </ul>
-                </div>
-                <div class="footer__nav">
-                    <h4 class="footer__title">Quick Links</h4>
-                    <ul class="footer__list">
-                        <li><a href="/#hero">Home</a></li>
-                        <li><a href="/#services">Services</a></li>
-                        <li><a href="/#projects">Projects</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/#testimonials">Testimonials</a></li>
-                        <li><a href="/#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer__nav">
-                    <h4 class="footer__title">Our Services</h4>
-                    <ul class="footer__list">
-                        <li><a href="/wood-and-panel-wall-decor">Wood and Panel Wall Decor</a></li>
-                        <li><a href="/kitchen-renovation">Kitchen Renovation</a></li>
-                        <li><a href="/bathroom-renovation">Bathroom Renovation</a></li>
-                        <li><a href="/whole-home-transformation">Whole-Home Transformation</a></li>
-                    </ul>
-                </div>
-            </div>
+        <ul class="checklist">
+          <li><i data-lucide="check"></i> Custom, design-led builds and budget-friendly standard cabinets</li>
+          <li><i data-lucide="check"></i> Granite, natural stone, quartz &amp; modern composite countertops</li>
+          <li><i data-lucide="check"></i> Durable, precise detailing built to last for years</li>
+        </ul>
+        <div class="founder__cta" style="margin-top:var(--space-6)">
+          <a class="btn btn--primary" href="#consultation">Get a free kitchen quote <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="footer__bottom">
-            <div class="footer__bottom-logo">
-                <img src="/img/logo-red.svg" alt="Style Homes Logo" />
-            </div>
-            <p>&copy; 2024 Style Homes. All rights reserved.</p>
+      </div>
+      <div class="about__media" data-reveal data-reveal-delay="120">
+        <div class="media"><img src="img/kitchen.webp" alt="Custom kitchen cabinetry &amp; stone countertops" loading="lazy" decoding="async"></div>
+        <div class="about__tag">
+          <i data-lucide="chef-hat"></i>
+          <span>Custom cabinetry · Stone countertops · Full installation</span>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="/js/libs/aos.js"></script>
-    <script src="/js/libs/anime.min.js"></script>
-    <script type="module" src="/src/entry.tsx"></script>
+  <!-- ============ CONSULTATION ============ -->
+  <section class="section consult" id="consultation">
+    <div class="container consult__inner">
+      <div class="consult__intro" data-reveal>
+        <p class="eyebrow">Free Consultation</p>
+        <h2 class="consult__title">Get Your Free Kitchen Consultation Today</h2>
+        <p class="consult__lead">Fill out the form below, and one of our experts will contact you shortly to provide personalized advice and solutions for your kitchen renovation project.</p>
+        <ul class="consult__points">
+          <li class="consult__point"><i data-lucide="badge-check"></i> Licensed in Washington &amp; Oregon</li>
+          <li class="consult__point"><i data-lucide="badge-check"></i> 13+ years of craftsmanship</li>
+          <li class="consult__point"><i data-lucide="badge-check"></i> Free, no-obligation estimate</li>
+        </ul>
+      </div>
+
+      <div class="consult__card" data-reveal data-reveal-delay="120">
+        <form class="form" action="#" method="POST" novalidate>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="firstName">First Name <span class="form__req">*</span></label>
+              <input class="form__control" type="text" id="firstName" name="firstName" placeholder="Add your name" autocomplete="given-name" required>
+              <span class="form__error">Please enter your first name.</span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="lastName">Last Name</label>
+              <input class="form__control" type="text" id="lastName" name="lastName" placeholder="Add your last name" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="email">Email <span class="form__req">*</span></label>
+              <input class="form__control" type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+              <span class="form__error">Please enter a valid email.</span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="phone">Phone Number</label>
+              <input class="form__control" type="tel" id="phone" name="phone" placeholder="000 000 0000" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="projectType">Project Type <span class="form__req">*</span></label>
+              <select class="form__control" id="projectType" name="projectType" required>
+                <option value="">Select</option>
+                <option value="kitchen" selected>Kitchen Renovation</option>
+                <option value="bathroom">Bathroom Renovation</option>
+                <option value="whole-home">Whole-Home Transformation</option>
+                <option value="wood-panel">Wood &amp; Panel Wall Decor</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form__error">Please choose a project type.</span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="location">Project Location</label>
+              <input class="form__control" type="text" id="location" name="location" placeholder="Your Location">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="budget">Estimated Budget</label>
+              <select class="form__control" id="budget" name="budget">
+                <option value="">Select</option>
+                <option value="under-5k">Under $5k</option>
+                <option value="5k-10k">$5k — $10k</option>
+                <option value="10k-25k">$10k — $25k</option>
+                <option value="25k-50k">$25k — $50k</option>
+                <option value="50k-100k-plus">$50k — $100k+</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="timeline">Preferred Timeline To Start</label>
+              <select class="form__control" id="timeline" name="timeline">
+                <option value="">Select</option>
+                <option value="14-days">Within 14 days</option>
+                <option value="1-2-months">Within 1-2 months</option>
+                <option value="3-6-months">3-6 months</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__group form__group--full">
+            <label class="form__label" for="details">Project Details <span class="form__req">*</span></label>
+            <textarea class="form__control" id="details" name="details" placeholder="Describe your kitchen renovation project" rows="4" required></textarea>
+            <span class="form__error">Please tell us a little about your project.</span>
+          </div>
+
+          <div class="form__group form__group--full">
+            <label class="form__label" for="photos">Upload Photos <span class="form__hint">(optional)</span></label>
+            <label class="form__file" for="photos">
+              <i data-lucide="image-plus"></i>
+              <span class="form__file-title"><b>Click to upload</b> or drag &amp; drop</span>
+              <span class="form__hint">JPG, PNG, HEIC — up to 10 images</span>
+              <input type="file" id="photos" name="photos" accept="image/*" multiple>
+            </label>
+            <div class="form__previews" id="photosPreview"></div>
+          </div>
+
+          <!-- Honeypot — hidden from humans, filled by bots -->
+          <div class="form__honeypot" aria-hidden="true">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form__actions">
+            <button type="submit" class="btn btn--primary btn--lg">Send<i data-lucide="arrow-right"></i></button>
+            <p class="form__note">By submitting you agree to be contacted about your project.</p>
+          </div>
+          <p class="form__success"><i data-lucide="circle-check"></i> Thanks — we've received your details and will be in touch shortly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section--cream" id="projects">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Our Kitchen Renovations</p>
+        <h2 class="section-title">Kitchen Projects</h2>
+        <p class="section-intro">A closer look at kitchens and cabinetry our team has designed and installed for builders and homeowners across the region.</p>
+      </div>
+      <div class="gallery__grid">
+
+        <article class="project" data-reveal>
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_1.webp" alt="Modern kitchen — Elite Home 1" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_2.webp" alt="Modern kitchen — Elite Home 2" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_3.webp" alt="Modern kitchen — Elite Home 3" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_4.webp" alt="Modern kitchen — Elite Home 4" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_5.webp" alt="Modern kitchen — Elite Home 5" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen1/kitchen1_6.webp" alt="Modern kitchen — Elite Home 6" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Modern Kitchen Project — Built for Elite Home</h3>
+            <p class="project__desc">This elegant black-and-white kitchen was completed in collaboration with DreamCabinets for Elite Home, a company known for building high-end modern homes. The property was sold immediately after being listed — a testament to the timeless design and attention to detail. The kitchen, all bedroom cabinets, interior doors, baseboards, and full millwork were designed and installed by StyleHomes and DreamCabinets. Together, we brought the designer's vision to life, combining precision craftsmanship with modern aesthetics. Our portfolio includes full project photo sets — from kitchen and cabinets to doors, shelves, and all finishing details — so you can see the complete transformation of each home we've worked on.</p>
+          </div>
+        </article>
+
+        <article class="project" data-reveal data-reveal-delay="90">
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen2/kitchen2_1.webp" alt="DreamCabinets kitchen install 1" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen2/kitchen2_2.webp" alt="DreamCabinets kitchen install 2" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Modern Kitchen Installation — DreamCabinets Project</h3>
+            <p class="project__desc">This modern kitchen was completed in collaboration with DreamCabinets. The cabinetry design and production were handled by DreamCabinets, while our team at StyleHomes performed the full cabinet installation with precision and craftsmanship. Our work included the installation of kitchen cabinets and additional cabinetry throughout the home. You can find more photos of this project in our Projects section, where we showcase the full scope of our installation work.</p>
+          </div>
+        </article>
+
+        <article class="project" data-reveal>
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen3/kitchen3_1.webp" alt="Modern white kitchen" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Modern White Kitchen — DreamCabinets Project</h3>
+            <p class="project__desc">This project was completed in collaboration with DreamCabinets. Although only one photo of the kitchen remains, our team at StyleHomes handled the cabinet installation throughout the entire home — including the kitchen, bathrooms, closets, and other custom areas. Located in a high-value neighborhood, this home stands out for its modern design and clean lines. We're proud to have contributed to this project by ensuring precise and professional installation that highlights the quality craftsmanship.</p>
+          </div>
+        </article>
+
+        <article class="project" data-reveal data-reveal-delay="90">
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen4/kitchen4_1.webp" alt="Professional countertop installation" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Professional Countertop Installation — Modern Kitchen Project</h3>
+            <p class="project__desc">Our team consists of skilled professionals with extensive experience in installing countertops of any complexity — including quartz, granite, and natural stone surfaces with or without backsplashes. In this project, our partners and installers completed the precise installation of all kitchen countertops, ensuring clean lines, perfect alignment, and high-end finishing quality.</p>
+          </div>
+        </article>
+
+        <article class="project" data-reveal>
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen5/kitchen5_1.webp" alt="Elite Home kitchen &amp; interior" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Modern Kitchen &amp; Interior Installation — Elite Home Project</h3>
+            <p class="project__desc">This modern home was completed in collaboration with DreamCabinets for Elite Home, a high-end residential builder. Our team at StyleHomes was responsible for the installation of all kitchen cabinets, decorative finishes, shelves, closets, and every interior door throughout the home. The result is a refined, cohesive design with exceptional attention to detail. You can view more photos of this project in our Projects section, where the full interior and millwork details are showcased.</p>
+          </div>
+        </article>
+
+        <article class="project" data-reveal data-reveal-delay="90">
+          <div class="carousel media">
+            <div class="carousel__track">
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen6/kitchen6_1.webp" alt="BTN Homes coastal kitchen 1" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen6/kitchen6_2.webp" alt="BTN Homes coastal kitchen 2" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen6/kitchen6_3.webp" alt="BTN Homes coastal kitchen 3" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide"><img src="img/projects/kitchen/kitchen6/kitchen6_4.webp" alt="BTN Homes coastal kitchen 4" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+            <span class="carousel__count"></span>
+          </div>
+          <div class="project__body">
+            <h3 class="project__name">Coastal Modern Home — Full Interior Project for BTN Homes</h3>
+            <p class="project__desc">This project was completed for the developer BTN Homes. Our StyleHomes team carried out all the essential interior works, including cabinet installation, flooring, stairs, tile work, fireplace finishing, interior doors, and baseboards. The entire interior was completed with precision, combining craftsmanship and modern design to achieve a clean, elegant look that matches the style of BTN Homes. More photos of this project can be found in our Projects section.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <img src="img/logo-red.svg" alt="Style Homes" style="height:46px;filter:brightness(0) invert(1);margin-bottom:1rem">
+        <p class="site-footer__brandtext">Kitchen &amp; bath remodeling and custom interiors across Portland OR &amp; Vancouver WA. Smart investment, quality craftsmanship.</p>
+        <div class="site-footer__contact">
+          <a href="tel:+13608596482"><i data-lucide="phone"></i> +1 (360) 859 6482</a>
+          <a href="mailto:stylehomesusa@icloud.com"><i data-lucide="mail"></i> stylehomesusa@icloud.com</a>
+          <a href="https://secure.lni.wa.gov/verify/Detail.aspx?UBI=605394148&LIC=STYLEHL751CS&SAW=" target="_blank" rel="noopener"><i data-lucide="shield-check"></i> WA License: STYLEHL751CS</a>
+          <a href="https://search.ccb.state.or.us/search/list_results.aspx" target="_blank" rel="noopener"><i data-lucide="shield-check"></i> Oregon CCB: 259642</a>
+        </div>
+        <div class="site-footer__socials">
+          <a class="site-footer__social" href="https://www.instagram.com/style_homes_usa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="site-footer__social" href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a class="site-footer__social" href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678" target="_blank" rel="noopener" aria-label="Thumbtack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v6.5a3 3 0 0 0 1 2.2l1 1H7l1-1a3 3 0 0 0 1-2.2Z"/><path d="M6.5 4h11"/><path d="M12 16.7V22"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__title">Quick Links</h3>
+        <ul class="site-footer__list">
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#consultation">Get Free Quote</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__title">Service Areas</h3>
+        <ul class="site-footer__list">
+          <li><span>Portland, OR +50 miles</span></li>
+          <li><span>Vancouver, WA +50 miles</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__title">Our Services</h3>
+        <ul class="site-footer__list">
+          <li><a href="wood-and-panel-wall-decor.html">Wood and Panel Wall Decor</a></li>
+          <li><a href="kitchen-renovation.html">Kitchen Renovation</a></li>
+          <li><a href="bathroom-renovation.html">Bathroom Renovation</a></li>
+          <li><a href="whole-home-transformation.html">Whole-Home Transformation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <img src="img/logo-red.svg" alt="Style Homes">
+      <p>© Style Homes 2026 · Licensed &amp; insured in WA &amp; OR</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

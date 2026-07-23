@@ -1,0 +1,23 @@
+/* ============================================================
+   ELEVATION TOKENS — radius + soft, warm-tinted shadows.
+   Shadows use a brown-black (33,27,21) at low opacity, layered,
+   replacing hard #ddd borders with subtle depth + hairlines.
+   ============================================================ */
+:root {
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(33, 27, 21, 0.05);
+  --shadow-sm: 0 2px 6px -1px rgba(33, 27, 21, 0.07), 0 1px 2px rgba(33, 27, 21, 0.05);
+  --shadow-md: 0 12px 26px -14px rgba(33, 27, 21, 0.16), 0 3px 8px -3px rgba(33, 27, 21, 0.06);
+  --shadow-lg: 0 26px 54px -22px rgba(33, 27, 21, 0.22), 0 8px 18px -10px rgba(33, 27, 21, 0.08);
+  --shadow-xl: 0 44px 90px -34px rgba(33, 27, 21, 0.28), 0 12px 24px -14px rgba(33, 27, 21, 0.1);
+  --shadow-brand: 0 14px 30px -12px rgba(139, 0, 0, 0.36);
+
+  --ring: 0 0 0 3px var(--focus-ring);
+}

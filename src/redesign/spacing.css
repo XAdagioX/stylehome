@@ -1,0 +1,28 @@
+/* ============================================================
+   SPACING & LAYOUT TOKENS — 4px base, generous vertical rhythm.
+   ============================================================ */
+:root {
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+  --space-11: 10rem;   /* 160 */
+
+  /* section vertical rhythm (fluid) */
+  --section-y: clamp(4rem, 2.6rem + 6vw, 8.5rem);
+  --section-y-lg: clamp(5rem, 3rem + 8vw, 11rem);
+
+  /* containers */
+  --container: 1240px;
+  --container-narrow: 940px;
+  --container-text: 720px;
+  --gutter: clamp(1.25rem, 0.7rem + 2.2vw, 2.75rem);
+
+  --header-h: 84px;
+}
