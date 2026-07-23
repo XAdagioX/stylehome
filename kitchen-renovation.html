@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitchen Remodeling in Portland OR & Vancouver WA | Style Homes LLC</title>
 
+    <!-- Critical loader styles inline — prevents FOUC (unstyled full-size logo)
+         before the bundled stylesheet loads. Literal colors: tokens not loaded yet. -->
+    <style>
+      .loader{position:fixed;inset:0;z-index:9999;background:#FDFBF7;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .5s ease,visibility .5s ease}
+      .loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+      .loader img{height:64px;width:auto;animation:loaderPulse 1.5s ease-in-out infinite}
+      .loader__bar{width:120px;height:3px;border-radius:3px;background:#ECE3D6;overflow:hidden}
+      .loader__bar::after{content:"";display:block;width:40%;height:100%;background:#8B0000;border-radius:3px;animation:loaderSlide 1.2s ease-in-out infinite}
+      @keyframes loaderPulse{0%,100%{opacity:1}50%{opacity:.55}}
+      @keyframes loaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(320%)}}
+    </style>
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Expert kitchen remodeling in Portland OR and Vancouver WA. Custom cabinets, countertops, and modern designs. Licensed contractors. Free consultation.">
     <meta name="author" content="Style Homes LLC">
