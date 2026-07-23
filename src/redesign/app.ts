@@ -175,14 +175,17 @@ ready(() => {
 
   /* ---------- Media placeholders (caption from alt; hide broken imgs) ---------- */
   document.querySelectorAll<HTMLElement>('.media').forEach((m) => {
-    if (!m.querySelector('.media__label')) {
-      const el = m.querySelector<HTMLImageElement | HTMLVideoElement>('img, video');
-      const txt = (el && (el.getAttribute('alt') || el.getAttribute('data-ph'))) || 'image';
-      const label = document.createElement('div');
-      label.className = 'media__label';
-      label.innerHTML = inlineIcon('image') + '<span><b>' + txt + '</b></span>';
-      m.insertBefore(label, m.firstChild);
-    }
+    // Only medias whose image/video is a DIRECT child get the placeholder caption —
+    // the design's `.media > img/video { z-index: 2 }` rule covers it once the asset
+    // loads. Carousels nest imgs in `.carousel__track`, so a label would sit ON TOP of
+    // the slides; skip them (and any media with no direct media child).
+    const el = m.querySelector<HTMLImageElement | HTMLVideoElement>(':scope > img, :scope > video');
+    if (!el || m.querySelector('.media__label')) return;
+    const txt = el.getAttribute('alt') || el.getAttribute('data-ph') || 'image';
+    const label = document.createElement('div');
+    label.className = 'media__label';
+    label.innerHTML = inlineIcon('image') + '<span><b>' + txt + '</b></span>';
+    m.insertBefore(label, m.firstChild);
   });
   document.querySelectorAll<HTMLImageElement>('img').forEach((im) => {
     im.addEventListener('error', () => im.setAttribute('data-broken', ''));

@@ -35,6 +35,7 @@
 
   .hero--home .hero__inner {
     grid-column: 1;
+    grid-row: 1;
     align-items: flex-start;
     text-align: left;
     max-width: 34ch;
@@ -46,6 +47,7 @@
   /* the portrait video, framed on the right */
   .hero--home .hero__media {
     grid-column: 2;
+    grid-row: 1;
     position: relative;
     inset: auto;
     width: 100%;
