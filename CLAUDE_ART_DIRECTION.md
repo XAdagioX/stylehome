@@ -25,6 +25,19 @@ contractor". Modern (2025), airy, trustworthy. Crimson is the ACCENT, never the 
 - Real project photos (kitchens/baths/panels) should feel like the product — show them crisp and
   well-lit in a gallery/grid, generous size, not buried behind text.
 
+## Hero video — IMPORTANT: the hero video is VERTICAL (9:16 portrait)
+The hero footage is portrait (720×1280), shot for phones. Do NOT design a full-width
+landscape video background on desktop — a vertical clip stretched to 16:9 crops/blurs badly.
+Instead use a **split hero**:
+- **Desktop / landscape:** two-column hero — text column (H1 "KITCHEN & BATH REMODELING",
+  subtitle, location, primary CTA) on one side; the **portrait video in a contained frame**
+  (rounded corners, soft shadow, ~full hero height) on the other. Video is shown whole, never
+  cropped or stretched. Warm off-white hero background around it — light and editorial.
+- **Mobile / portrait:** the vertical video goes **full-bleed** behind the text, with a light
+  bottom-to-top gradient so the headline/CTA stay legible (AA contrast).
+- Video is muted, autoplays, loops; a poster image shows before it loads. Keep it feeling like a
+  magazine cover, not a banner.
+
 ## Type
 - Display/headings: a refined **serif** or high-contrast display face (craftsmanship, warmth,
   trust). Big, confident H1/H2.

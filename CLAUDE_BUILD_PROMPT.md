@@ -38,6 +38,19 @@ only changed in look. This is an implementation task, not a fresh mockup.
   (`img/kitchen.jpg`, `img/bathroom.jpg`, `img/panel.jpg`, `img/home.jpg`),
   project gallery in `img/projects/`, and `img/logo-red.svg` / `img/logo.png`.
 
+## Hero video (vertical 9:16) — split layout, responsive, no JS switching
+- Assets: `video/hero-vertical.mp4` + `video/hero-vertical.webm` (muted, faststart), poster
+  `img/hero-vertical-poster.jpg` (+ `.webp`). Above the fold — do NOT lazy-load; set `preload`
+  and the `poster` attribute for a fast LCP with no layout shift.
+- One `<video autoplay muted loop playsinline poster=...>` with two `<source>` (webm first, mp4
+  fallback). Prefer a CSS-only responsive layout (no JS to swap DOM):
+  - Desktop (min-width ~900px): CSS grid, text column + portrait video framed in its 9:16 box
+    (`object-fit: cover` inside the frame), rounded corners + soft shadow, warm-neutral hero bg.
+  - Mobile: hero collapses to a single full-bleed layer, video `object-fit: cover`, text overlaid
+    with a light gradient scrim for AA contrast.
+- The old landscape `video/hero.mp4` can stay as an unused fallback; the redesign hero uses the
+  vertical asset per above.
+
 ## ⚠️ SEO — must be PRESERVED or IMPROVED, never regressed
 This is a live lead-gen site that ranks locally. Treat SEO as a hard requirement:
 - **Per-page `<head>`**: keep unique `<title>`, `<meta name="description">`, keywords,
